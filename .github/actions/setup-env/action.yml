@@ -117,7 +117,7 @@ runs:
 
     - name: Cache WIX Toolset
       if: env.SETUP_SYSTEM == 'true' && runner.os == 'Windows'
-      uses: actions/cache@v4
+      uses: actions/cache@v6                      # ← ИЗМЕНЕНО: было @v4
       id: wix-cache
       with:
         path: C:\Program Files (x86)\WiX Toolset v3.11
@@ -149,7 +149,7 @@ runs:
     # Build optimizations (caching)
     - name: Setup sccache
       if: inputs.mode == 'build'
-      uses: mozilla-actions/sccache-action@v0.0.9
+      uses: mozilla-actions/sccache-action@v0.0.10   # ← ИЗМЕНЕНО: было @v0.0.9
 
     - name: Enable sccache
       if: inputs.mode == 'build'
